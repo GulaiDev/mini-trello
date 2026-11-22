@@ -1,0 +1,35 @@
+# Mini Trello 后端依赖
+# Python 3.12+ / FastAPI / SQLAlchemy async / MySQL 8.4 (aiomysql)
+
+# --- Web 框架与 ASGI ---
+fastapi==0.165.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.34        # UploadFile / 表单解析（阶段 5）
+
+# --- ORM、迁移与数据库驱动 ---
+SQLAlchemy==2.1.9
+alembic==1.20.1
+aiomysql==0.3.2                 # SQLAlchemy 方言：mysql+aiomysql
+greenlet==3.5.6                 # SQLAlchemy async 的同步桥接依赖
+cryptography==50.0.2            # MySQL 8 caching_sha2_password 认证
+
+# --- 配置与数据校验 ---
+pydantic==2.14.4
+pydantic-settings==2.16.3
+python-dotenv==1.2.3            # 读取 .env
+email-validator==2.4.0          # Pydantic EmailStr
+
+# --- 认证与密码哈希 ---
+PyJWT==2.15.1
+pwdlib[argon2]==0.4.2           # 密码哈希（argon2，替代已停止维护的 passlib）
+
+# --- 附件处理（阶段 5） ---
+aiofiles==25.1.0
+Pillow==13.0.0                  # 缩略图生成
+
+# --- 测试与代码质量 ---
+pytest==9.2.0
+pytest-asyncio==1.5.0
+pytest-cov==7.1.0
+httpx==0.28.1                   # ASGITransport 异步测试客户端
+ruff==0.17.6
