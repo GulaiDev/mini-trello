@@ -1,0 +1,23 @@
+# 统一换行符规范：开发机为 Windows，容器与 CI 为 Linux，
+# 强制 LF 可避免 `/bin/sh` 解释器报错与契约文件逐字节比对失败。
+
+# 默认：文本文件在仓库中存 LF，检出时也用 LF
+* text=auto eol=lf
+
+# Shell 脚本必须 LF，否则容器内 shebang 解释器失败
+*.sh text eol=lf
+
+# OpenAPI 契约在 CI 中逐字节比对，必须 LF
+backend/openapi.json text eol=lf
+
+# 明确的二进制类型，禁止任何换行符转换
+*.png binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

@@ -1,0 +1,16 @@
+# 构建上下文忽略项：虚拟环境、缓存、本地密钥与运行产物
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.coverage
+htmlcov
+*.log
+uploads
+.git
+.env
+.env.*
+!.env.example

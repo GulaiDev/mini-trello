@@ -1,0 +1,27 @@
+# Ruff 配置：显式固定规则集与行宽，保证本地与 CI 行为一致，
+# 不依赖上层目录可能存在的 ruff/pyproject 配置。
+line-length = 100
+target-version = "py312"
+
+# 自动生成的迁移脚本不参与 lint/format
+extend-exclude = ["alembic/versions"]
+
+[lint]
+select = [
+    "E",   # pycodestyle 错误
+    "F",   # pyflakes
+    "W",   # pycodestyle 警告
+    "I",   # isort 导入排序
+    "UP",  # pyupgrade 现代化语法
+    "B",   # flake8-bugbear 常见陷阱
+    "C4",  # flake8-comprehensions
+]
+ignore = [
+    "E501",   # 行宽交给 formatter 处理
+    "B008",   # FastAPI 依赖注入在默认参数中调用 Depends()/Query()
+    "UP042",  # 保留 (str, Enum) 写法，避免 StrEnum 迁移带来的行为差异
+    "UP046",  # 保留 Generic[T] 写法，PEP695 泛型类语法与 Pydantic 泛型模型兼容性待定
+]
+
+[format]
+quote-style = "double"

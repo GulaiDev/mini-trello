@@ -1,0 +1,9 @@
+# 构建上下文忽略项：依赖与产物无需进入镜像（构建阶段用 npm ci 重新安装）
+node_modules
+dist
+dist-ssr
+coverage
+*.log
+.git
+.env
+.env.*
